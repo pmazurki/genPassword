@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Get Password</title>
+
+</head>
+
+<body>
+    <div class="background"></div>
+    <div class="container-fluid">
+        <header>
+            <div class="container-fluid">
+                <p class="display-1 text-center m-3">Get Password</p>
+            </div>
+        </header>
+        <section id="quoteView">
+            <div class="container-fluid ">
+                <div class="row">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-8 panel-right px-0">
+
+                        <blockquote class="blockquote quote">
+                            <p>
+                                “Better if you don't. Suffice it to say '123kitty' does not a strong password make”
+                            </p>
+                        </blockquote>
+                        <figcaption class="blockquote-footer quote ">
+                            House Rules
+                        </figcaption>
+                        </figure>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="genPasswordView">
+            <div class="container-fluid ">
+                <div class="row">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-12 p-1">
+                                <div class="input-group mb-3">
+                                    <input id="genPasswordInput" type="text" class="form-control text-center" placeholder="Password" aria-label="Password" aria-describedby="button-addon2">
+                                    <button id="genPasswordBtnGen" class="btn btn-outline-secondary" type="button" id="button-addon2">Gen</button>
+                                    <button id="genPasswordBtnCopy" class="btn btn-outline-secondary" type="button" id="button-addon2">Copy</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="genPasswordSetupView">
+            <div class="container-fluid ">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p class="text-center m-2">Length of generated password:</p>
+                    </div>
+                    <div class="col-md-6 text-center p-1">
+                        <div class="pb-1">
+                            <div class="input-group">
+                                <button id="genPasswordSetLengthBtnMinus" class="btn btn-outline-secondary" type="button">-</button>
+                                <input id="genPasswordSetLengthInput" type="text" class="form-control text-center" placeholder="Password length, default is 9 digits" aria-label="Password length">
+                                <button id="genPasswordSetLengthBtnPlus" class="btn btn-outline-secondary" type="button">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-fluid ">
+                <div class="row">
+                    <div class="col-md-6 text-center my-auto ">
+                        <p>Generate using character set :</p>
+                    </div>
+                    <div class="col-md-6 text-center p-1">
+                        <div class="pb-1">
+                            <input type="checkbox" class="btn-check" id="btn-check-digitals" autocomplete="off">
+                            <label class="btn btn-outline-secondary btn-block
+                " for="btn-check-digitals">Digitals
+                      </label> </div>
+                        <div class="pb-1">
+                            <input type="checkbox" class="btn-check" id="btn-check-upper" autocomplete="off">
+                            <label class="btn btn-outline-secondary btn-block" for="btn-check-upper">Uppercase
+                              </label></div>
+                        <div class="pb-1">
+                            <input type="checkbox" class="btn-check" id="btn-check-lower" autocomplete="off">
+                            <label class="btn btn-outline-secondary btn-block" for="btn-check-lower">Lowercase
+                                </label></div>
+                        <div class="pb-1">
+                            <input type="checkbox" class="btn-check" id="btn-check-special" autocomplete="on">
+                            <label class="btn btn-outline-secondary btn-block" for="btn-check-special">Special
+                            </label></div>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid ">
+                <div class="row">
+                    <div class="col-md-6 text-center p-1">
+                        <p>Separator :</p>
+                    </div>
+                    <div class="col-md-6 text-center p-1 ">
+                        <div class="btn-group btn-block ">
+                            <input type="radio " class="btn-check " name="options-outlined " id="success-outlined " autocomplete="off " checked>
+                            <label class="btn btn-outline-success " for="success-outlined ">Enable</label>
+
+                            <input type="radio " class="btn-check " name="options-outlined " id="danger-outlined " autocomplete="off ">
+                            <label class="btn btn-outline-success " for="danger-outlined ">Disable</label>
+                        </div>
+                    </div>
+        </section>
+        <div class="col-md-6 "></div>
+        <div class="col-md-6 panel-right px-0 charactersAll">
+            <p>1 2 3 4 5 6 7 8 9 0</p>
+            <p>A B C D E F G H I J K L M N O P Q R S T U V W X Y Z</p>
+            <p>a b c d e f g h i j k l m n o p q r s t u v w x y z</p>
+            <p>! @ # $ % ^ & * </p>
+        </div>
+
+
+
+        <footer class="footer">
+            <div class="container-fluid text-center ">
+                <hr>
+                <p>Gen Password , by <a href="https://twitter.com/pmazurki ">@pmazurki</a>.</p>
+                </p>
+            </div>
+
+        </footer>
+        </div>
+        <script type="module" src="./src/main.js"></script>
+</body>
+
+</html>
