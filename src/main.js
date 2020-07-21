@@ -8,9 +8,11 @@ let setChar = 44
 let setStep = 3
 let setPwdLength = 9
 let sha = 'SHA-1'
-    // simple functions
-const getDOMElements = id => document.getElementById(id)
 
+// let swDisplay = 'none'
+// simple functions
+const getDOMElements = id => document.getElementById(id)
+const swDisplay = el => (el.style.display === 'none' ? (el.style.display = 'block') : (el.style.display = 'none'))
 async function hash(str, encode) {
     viewElements.genHashInput.value = await getHash(str, encode)
 }
@@ -18,23 +20,33 @@ async function hash(str, encode) {
 // functions
 const connectHTMLElements = () => {
     viewElements.genPasswordView = getDOMElements('genPasswordView')
+    viewElements.genPasswordShaView = getDOMElements('genPasswordShaView')
+    viewElements.genPasswordSetupView = getDOMElements('genPasswordSetupView')
+    viewElements.genPasswordInfoView = getDOMElements('genPasswordInfoView')
+
     viewElements.genPasswordInput = getDOMElements('genPasswordInput')
     viewElements.genHashInput = getDOMElements('genHashInput')
+    viewElements.genPasswordSetLengthInput = getDOMElements('genPasswordSetLengthInput')
+
     viewElements.genPasswordBtnGen = getDOMElements('genPasswordBtnGen')
     viewElements.genPasswordBtnCopy = getDOMElements('genPasswordBtnCopy')
+    viewElements.genPasswordBtnHash = getDOMElements('genPasswordBtnHash')
+    viewElements.genPasswordBtnSetup = getDOMElements('genPasswordBtnSetup')
     viewElements.genHashBtnSHA1 = getDOMElements('genHashBtnSHA1')
     viewElements.genHashBtnSHA2 = getDOMElements('genHashBtnSHA2')
     viewElements.genPasswordSetLengthBtnMinus = getDOMElements('genPasswordSetLengthBtnMinus')
     viewElements.genPasswordSetLengthBtnPlus = getDOMElements('genPasswordSetLengthBtnPlus')
-    viewElements.genPasswordSetLengthInput = getDOMElements('genPasswordSetLengthInput')
 }
 
 const setupListeners = () => {
         viewElements.genPasswordInput.addEventListener('keydown', onEnterSubmit)
         viewElements.genPasswordSetLengthInput.addEventListener('keydown', onEnterLengthSubmit)
         viewElements.genPasswordSetLengthInput.addEventListener('focusout', onEnterLengthFocusout)
+
         viewElements.genPasswordBtnGen.addEventListener('click', onClickGenSubmit)
         viewElements.genPasswordBtnCopy.addEventListener('click', onClickCopySubmit)
+        viewElements.genPasswordBtnHash.addEventListener('click', onClickHashSubmit)
+        viewElements.genPasswordBtnSetup.addEventListener('click', onClickSetupSubmit)
         viewElements.genHashBtnSHA1.addEventListener('click', onClickSHA1Submit)
         viewElements.genHashBtnSHA2.addEventListener('click', onClickSHA2Submit)
         viewElements.genPasswordSetLengthBtnMinus.addEventListener('click', onClickMinusSubmit)
@@ -44,6 +56,7 @@ const setupListeners = () => {
 const iniApp = () => {
         connectHTMLElements()
         setupListeners()
+        loadView()
     }
     // ini app
     // function actions
@@ -84,4 +97,15 @@ const onClickPlusSubmit = () => {
     setPwdLength < 99 ? (setPwdLength += 1) : setPwdLength
 }
 
+const onClickHashSubmit = () => swDisplay(viewElements.genPasswordShaView)
+
+const onClickSetupSubmit = () => swDisplay(viewElements.genPasswordSetupView)
+
+// switch view
+const loadView = () => {
+    viewElements.genPasswordView.style.display = 'block'
+    viewElements.genPasswordShaView.style.display = 'none'
+    viewElements.genPasswordSetupView.style.display = 'none'
+    viewElements.genPasswordInfoView.style.display = 'none'
+}
 document.addEventListener('DOMContentLoaded', iniApp)

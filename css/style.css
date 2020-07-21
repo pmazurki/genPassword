@@ -56,6 +56,14 @@ body>.container {
     font-size: 0.8rem;
 }
 
+.visible {
+    visibility: visible !important;
+}
+
+.invisible {
+    visibility: hidden !important;
+}
+
 
 /* body {
     font-weight: 200;
