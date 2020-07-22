@@ -3,6 +3,27 @@ import Rand from './generator.js'
 import getHash from './hash.js'
 // variables
 const viewElements = {}
+const viewElementsId = [
+    //view
+    'genPasswordView',
+    'genPasswordShaView',
+    'genPasswordSetupView',
+    'genPasswordInfoView',
+    //input
+    'genPasswordInput',
+    'genHashInput',
+    //btn
+    'genPasswordSetLengthInput',
+    'genPasswordBtnGen',
+    'genPasswordBtnCopy',
+    'genPasswordBtnHash',
+    'genPasswordBtnSetup',
+    'genHashBtnSHA1',
+    'genHashBtnSHA2',
+    'genPasswordSetLengthBtnMinus',
+    'genPasswordSetLengthBtnPlus',
+]
+
 let getPassword
 let setChar = 44
 let setStep = 3
@@ -13,30 +34,13 @@ let sha = 'SHA-1'
 // simple functions
 const getDOMElements = id => document.getElementById(id)
 const swDisplay = el => (el.style.display === 'none' ? (el.style.display = 'block') : (el.style.display = 'none'))
+const getIdtoArry = (o, p, n) => Object.defineProperty(o, p, { value: getDOMElements(p) })
 async function hash(str, encode) {
     viewElements.genHashInput.value = await getHash(str, encode)
 }
 
 // functions
-const connectHTMLElements = () => {
-    viewElements.genPasswordView = getDOMElements('genPasswordView')
-    viewElements.genPasswordShaView = getDOMElements('genPasswordShaView')
-    viewElements.genPasswordSetupView = getDOMElements('genPasswordSetupView')
-    viewElements.genPasswordInfoView = getDOMElements('genPasswordInfoView')
-
-    viewElements.genPasswordInput = getDOMElements('genPasswordInput')
-    viewElements.genHashInput = getDOMElements('genHashInput')
-    viewElements.genPasswordSetLengthInput = getDOMElements('genPasswordSetLengthInput')
-
-    viewElements.genPasswordBtnGen = getDOMElements('genPasswordBtnGen')
-    viewElements.genPasswordBtnCopy = getDOMElements('genPasswordBtnCopy')
-    viewElements.genPasswordBtnHash = getDOMElements('genPasswordBtnHash')
-    viewElements.genPasswordBtnSetup = getDOMElements('genPasswordBtnSetup')
-    viewElements.genHashBtnSHA1 = getDOMElements('genHashBtnSHA1')
-    viewElements.genHashBtnSHA2 = getDOMElements('genHashBtnSHA2')
-    viewElements.genPasswordSetLengthBtnMinus = getDOMElements('genPasswordSetLengthBtnMinus')
-    viewElements.genPasswordSetLengthBtnPlus = getDOMElements('genPasswordSetLengthBtnPlus')
-}
+const connectHTMLElements = () => viewElementsId.map(id => getIdtoArry(viewElements, id))
 
 const setupListeners = () => {
         viewElements.genPasswordInput.addEventListener('keydown', onEnterSubmit)
