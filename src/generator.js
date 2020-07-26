@@ -1,6 +1,6 @@
 const keyFilter = (el, name) => el.filter(el => el.key === name).pop()
 
-const NameNumber = {
+const nameNumber = {
     si: [
         { value: 1, symbol: '' },
         { value: 1e3, symbol: 'Thousand' },
@@ -29,15 +29,14 @@ const NameNumber = {
 }
 
 export default {
-    char: [{
-            key: 4,
-            value: ['1234567890', 'abcdefghijklmnopqrstuvwxyz', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', '!@#$%^&*(){}[]=<>/,. '],
-        },
-        { key: 44, value: ['1234567890', 'abcdefghijklmnopqrstuvwxyz', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', '!@#$%&* '] },
-        { key: 3, value: ['1234567890', 'abcdefghijklmnopqrstuvwxyz', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'] },
-        { key: 2, value: ['1234567890', 'abcdefghijklmnopqrstuvwxyz'] },
-        { key: 22, value: ['1234567890', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'] },
-        { key: 1, value: ['1234567890'] },
+    char: [
+        { key: 1, value: 'abcdefghijklmnopqrstuvwxyz' },
+        { key: 2, value: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' },
+        { key: 3, value: '1234567890' },
+        { key: 4, value: 'abcdefghijklmnopqrstuvwxyz' },
+        { key: 5, value: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' },
+        { key: 6, value: '!@#$%&* ' },
+        { key: 7, value: '!@#$%^&*(){}[]=<>/,. ' },
     ],
     comPerSec: [{
             key: 2,
@@ -63,15 +62,22 @@ export default {
         let a
         s ? (this.isSpace = s) : s
 
+        const filterChar = { key: typ }
+        const filterObjectArray = (data, filterChar) => {
+            let result = data.reduce((a, b) => (!filterChar['key'].includes(b.key) ? a : [...a, b]), [])
+            return Object.keys(result).map(key => result[key].value)
+        }
+
         const randLength = el => Math.floor(Math.random() * el.length)
         const getArr = el => el[randLength(el)]
-        const getRandArr = () => getArr(getArr(keyFilter(this.char, typ).value))
+        const getRandArr = () => getArr(getArr(filterObjectArray(this.char, filterChar)))
         const isSpaces = (is, i) => (is ? (i % is == 1 ? is : !is) : is)
-        const resPass = i => {
-            a = isSpaces(this.isSpace, i)
-            a ? (res += getRandArr() + this.separate) : (res += getRandArr())
-            return a ? res.substring(0, res.length - 1) : res
-        }
+
+        // const resPass = i => {
+        //     a = isSpaces(this.isSpace, i)
+        //     a ? (res += getRandArr() + this.separate) : (res += getRandArr())
+        //     return a ? res.substring(0, res.length - 1) : res
+        // }
 
         const incArr = n => {
             let res = ''
@@ -103,15 +109,15 @@ export default {
             pass: pass,
             lengthPass: lengthPass,
             collection: collection,
-            allCases: NameNumber.get(allCases),
-            seconds: NameNumber.get(contime(1)),
-            minutes: NameNumber.get(contime(60)),
-            hours: NameNumber.get(contime(60 * 60)),
-            days: NameNumber.get(contime(60 * 60 * 24)),
-            months: NameNumber.get(contime((60 * 60 * 24 * 7 * 52) / 12)),
-            years: NameNumber.get(contime(60 * 60 * 24 * 7 * 52)),
+            allCases: nameNumber.get(allCases),
+            seconds: nameNumber.get(contime(1)),
+            minutes: nameNumber.get(contime(60)),
+            hours: nameNumber.get(contime(60 * 60)),
+            days: nameNumber.get(contime(60 * 60 * 24)),
+            months: nameNumber.get(contime((60 * 60 * 24 * 7 * 52) / 12)),
+            years: nameNumber.get(contime(60 * 60 * 24 * 7 * 52)),
             computer: comName,
-            perSec: NameNumber.get(comPerSec),
+            perSec: nameNumber.get(comPerSec),
             yearsToBreak: Math.floor(2 * Math.log2(allCases / (comPerSec * 60 * 60))),
         }
     },

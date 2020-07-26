@@ -5,42 +5,56 @@ import getHash from './hash.js'
 const viewElements = {}
 const viewElementsId = [
     //view
-    'genPasswordView',
-    'genPasswordShaView',
-    'genPasswordSetupView',
-    'genPasswordInfoView',
+    { id: 'genPasswordView' },
+    { id: 'genPasswordShaView' },
+    { id: 'genPasswordSetupView' },
+    { id: 'genPasswordInfoView' },
     //input
-    'genPasswordInput',
-    'genHashInput',
+    { id: 'genPasswordInput' },
+    { id: 'genHashInput' },
+    { id: 'genPasswordSetLengthInput' },
     //btn
-    'genPasswordSetLengthInput',
-    'genPasswordBtnGen',
-    'genPasswordBtnCopy',
-    'genPasswordBtnHash',
-    'genPasswordBtnSetup',
-    'genHashBtnSHA1',
-    'genHashBtnSHA2',
-    'genPasswordSetLengthBtnMinus',
-    'genPasswordSetLengthBtnPlus',
+    { id: 'genPasswordBtnGen' },
+    { id: 'genPasswordBtnCopy' },
+    { id: 'genPasswordBtnHash' },
+    { id: 'genPasswordBtnSetup' },
+    { id: 'genHashBtnSHA1' },
+    { id: 'genHashBtnSHA2' },
+    { id: 'genPasswordSetLengthBtnMinus' },
+    { id: 'genPasswordSetLengthBtnPlus' },
 ]
 
 let getPassword
-let setChar = 44
+let setChar = [1, 2, 3, 4, 5, 6, 8]
 let setStep = 3
 let setPwdLength = 9
 let sha = 'SHA-1'
 
-// let swDisplay = 'none'
 // simple functions
 const getDOMElements = id => document.getElementById(id)
+const getIdArry = (obj, param) => Object.defineProperty(obj, param, { value: getDOMElements(param) })
+
 const swDisplay = el => (el.style.display === 'none' ? (el.style.display = 'block') : (el.style.display = 'none'))
-const getIdtoArry = (o, p, n) => Object.defineProperty(o, p, { value: getDOMElements(p) })
+const fadeInOut = el => {
+    el.style.opacity === '1' ? (el.style.opacity = '0') : (el.style.opacity = '1')
+    let opacity = 0
+    const loopFade = el => {
+        if (opacity < 1) {
+            opacity += 0.075
+            setTimeout(() => loopFade(el), 75)
+        }
+        el.style.opacity = opacity
+    }
+    loopFade(el)
+}
+
 async function hash(str, encode) {
     viewElements.genHashInput.value = await getHash(str, encode)
 }
 
 // functions
-const connectHTMLElements = () => viewElementsId.map(id => getIdtoArry(viewElements, id))
+const connectHTMLElements = () =>
+    Object.keys(viewElementsId).map(key => getIdArry(viewElements, viewElementsId[key].id))
 
 const setupListeners = () => {
         viewElements.genPasswordInput.addEventListener('keydown', onEnterSubmit)
@@ -101,7 +115,10 @@ const onClickPlusSubmit = () => {
     setPwdLength < 99 ? (setPwdLength += 1) : setPwdLength
 }
 
-const onClickHashSubmit = () => swDisplay(viewElements.genPasswordShaView)
+const onClickHashSubmit = () => {
+    fadeInOut(viewElements.genPasswordShaView)
+    swDisplay(viewElements.genPasswordShaView)
+}
 
 const onClickSetupSubmit = () => swDisplay(viewElements.genPasswordSetupView)
 
