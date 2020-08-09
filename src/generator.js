@@ -33,10 +33,8 @@ export default {
         { key: 1, value: 'abcdefghijklmnopqrstuvwxyz' },
         { key: 2, value: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' },
         { key: 3, value: '1234567890' },
-        { key: 4, value: 'abcdefghijklmnopqrstuvwxyz' },
-        { key: 5, value: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' },
-        { key: 6, value: '!@#$%&* ' },
-        { key: 7, value: '!@#$%^&*(){}[]=<>/,. ' },
+        { key: 4, value: '!@#$%&* ' },
+        { key: 5, value: '!@#$%^&*(){}[]=<>/,. ' },
     ],
     comPerSec: [{
             key: 2,

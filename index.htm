@@ -64,7 +64,7 @@
                 <div class="row">
                     <div class="col-md-12 p-1">
                         <div class="input-group mb-3">
-                            <input id="genHashInput" type="text" class="form-control text-center" placeholder="Password" aria-label="Password" aria-describedby="button-addon2">
+                            <input id="genHashInput" type="text" class="form-control text-center" placeholder="hash" aria-label="Password" aria-describedby="button-addon2">
                             <button id="genHashBtnSHA1" class="btn btn-outline-secondary" type="button" id="button-addon2">SHA1</button>
                             <button id="genHashBtnSHA2" class="btn btn-outline-secondary" type="button" id="button-addon2">SHA256</button>
                         </div>
@@ -97,21 +97,20 @@
                     </div>
                     <div class="col-md-6 text-center p-1">
                         <div class="pb-1">
-                            <input type="checkbox" class="btn-check" id="btn-check-digitals" autocomplete="off">
-                            <label class="btn btn-outline-secondary btn-block
-                " for="btn-check-digitals">Digitals
+                            <input type="checkbox" class="btn-check" autocomplete="off">
+                            <label id="btnCheckDigitals" class="btn btn-outline-secondary btn-block" for="btnCheckDigitals">Digitals
                       </label> </div>
                         <div class="pb-1">
-                            <input type="checkbox" class="btn-check" id="btn-check-upper" autocomplete="off">
-                            <label class="btn btn-outline-secondary btn-block" for="btn-check-upper">Uppercase
+                            <input type="checkbox" class="btn-check" autocomplete="off">
+                            <label id="btnCheckUpper" class="btn btn-outline-secondary btn-block" for="btnCheckUpper">Uppercase
                               </label></div>
                         <div class="pb-1">
-                            <input type="checkbox" class="btn-check" id="btn-check-lower" autocomplete="off">
-                            <label class="btn btn-outline-secondary btn-block" for="btn-check-lower">Lowercase
+                            <input type="checkbox" class="btn-check" autocomplete="off">
+                            <label id="btnCheckLower" class="btn btn-outline-secondary btn-block" for="btnCheckLower">Lowercase
                                 </label></div>
                         <div class="pb-1">
-                            <input type="checkbox" class="btn-check" id="btn-check-special" autocomplete="on">
-                            <label class="btn btn-outline-secondary btn-block" for="btn-check-special">Special
+                            <input type="checkbox" class="btn-check" autocomplete="on">
+                            <label id="btnCheckSpecial" class="btn btn-outline-secondary btn-block" for="btnCheckSpecial">Special
                             </label></div>
                     </div>
                 </div>
@@ -140,6 +139,16 @@
                 <p>! @ # $ % ^ & * </p>
             </div>
         </section>
+        <section>
+            <div class="container-fluid ">
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table table-responsive table-striped table-hover rounded ">
+
+                    </div>
+                </div>
+            </div>
+        </section>
 
         </div>
 
@@ -152,7 +161,7 @@
 
         </footer>
         </div>
-        <script type="module" src="./src/main.js"></script>
+        <script type="module" src="./src/app.js"></script>
 </body>
 
 </html>
